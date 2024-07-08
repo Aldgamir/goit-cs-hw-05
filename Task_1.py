@@ -23,7 +23,7 @@ async def read_folder(src_folder, dst_folder):
     for root, _, files in os.walk(src_folder):
         for file in files:
             src_path = Path(root) / file
-            file_ext = src_path.suffix[1:]  # Get file extension without leading dot
+            file_ext = src_path.suffix[1:]
             dst_path = Path(dst_folder) / file_ext / file
             tasks.append(copy_file(src_path, dst_path))
     await asyncio.gather(*tasks)
@@ -45,3 +45,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# Тепер, замість прописання шляху до директорій безпосередньо в коді, можна використовувати командний рядок...
